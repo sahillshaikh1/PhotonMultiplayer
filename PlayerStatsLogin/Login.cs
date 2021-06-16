@@ -121,6 +121,7 @@ public class Login : MonoBehaviour
         {
             // request.Statistics is a list, so multiple StatisticUpdate objects can be defined if required.
             //To Update Statistic goto settings Titlessetting > APIFeatures > AllowClientPostPlayerStatistic
+            //Add variable in Players > statistics > name value 
             Statistics = new List<StatisticUpdate> {
         new StatisticUpdate { StatisticName = "Levell", Value = Level },
          new StatisticUpdate { StatisticName = "Money", Value = coin },
