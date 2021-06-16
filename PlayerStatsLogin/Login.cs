@@ -168,6 +168,22 @@ public class Login : MonoBehaviour
 
 
     #endregion
+      #region DisplayName
+        public void GetInfo()
+    {
+        GetAccountInfoRequest infoRequest = new GetAccountInfoRequest();
+        Debug.Log(infoRequest.TitleDisplayName +"Name");
+        PlayFabClientAPI.GetAccountInfo(infoRequest, Name, error => { });
+    }
+
+    public void Name(GetAccountInfoResult get)
+    {
+
+        GetAccountInfoResult info = new GetAccountInfoResult();
+        Debug.Log(get.AccountInfo.Username);// getting Name Here
+
+    }
+    #endregion
 
 }
 
