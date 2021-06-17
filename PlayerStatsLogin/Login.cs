@@ -182,7 +182,7 @@ public class Login : MonoBehaviour
     {
 
         GetAccountInfoResult info = new GetAccountInfoResult();
-        Debug.Log(info.AccountInfo.Username);// getting Name Here
+        Debug.Log(get.AccountInfo.Username);// getting Name Here
 
     }
     public void setDisplayName()
