@@ -99,6 +99,7 @@ public class Login : MonoBehaviour
     {
         GetStats();
         LoginPanel.SetActive(false);
+        setDisplayName();
         Debug.Log("Congratulations, Register successful ");
         //RememberMe(); //torememberme
     }
@@ -169,10 +170,11 @@ public class Login : MonoBehaviour
 
     #endregion
       #region DisplayName
-        public void GetInfo()
+            public void GetInfo()
     {
         GetAccountInfoRequest infoRequest = new GetAccountInfoRequest();
         Debug.Log(infoRequest.TitleDisplayName +"Name");
+        Debug.Log(infoRequest.Email + "Email");
         PlayFabClientAPI.GetAccountInfo(infoRequest, Name, error => { });
     }
 
@@ -180,8 +182,23 @@ public class Login : MonoBehaviour
     {
 
         GetAccountInfoResult info = new GetAccountInfoResult();
-        Debug.Log(get.AccountInfo.Username);// getting Name Here
+        Debug.Log(info.AccountInfo.Username);// getting Name Here
 
+    }
+    public void setDisplayName()
+    {
+        var request = new UpdateUserTitleDisplayNameRequest { DisplayName = username };
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnUpdateDisplayNameSuccess, OnError);
+   }
+
+    private void OnUpdateDisplayNameSuccess(UpdateUserTitleDisplayNameResult result)
+    {
+        Debug.Log("DisplayName: " +result.DisplayName);
+    }
+
+    private void OnError(PlayFabError obj)
+    {
+        throw new NotImplementedException();
     }
     #endregion
 
